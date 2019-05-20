@@ -1,33 +1,77 @@
 .App {
   text-align: center;
+  overflow: hidden;
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+.ant-carousel .slick-slide {
+  text-align: center;
+  height    : 160px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.ant-carousel .slick-slide h3 {
+  color: #fff;
 }
 
-.App-link {
-  color: #61dafb;
+.swiperItem {
+  position: relative;
+  width   : 100%;
+  height  : 100%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.swiper-title {
+  position   : absolute;
+  bottom     : -15px;
+  left       : 0;
+  background : rgba(0, 0, 0, 0.6);
+  color      : #fff;
+  width      : 100%;
+  height     : 30px;
+  text-align : left;
+  text-indent: 5px;
+  line-height: 30px;
+}
+
+.ant-carousel .slick-dots {
+  bottom: 12px;
+  right : -130px;
+}
+
+.new-list-item {
+  width        : 100%;
+  display      : flex;
+  position     : relative;
+  padding      : 10px 15px;
+  border-bottom: 1px solid #eee;
+}
+
+.left-info {
+  flex        : 1;
+  margin-right: 10px;
+}
+
+.left-info h4 {
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+}
+
+.right-img {
+  flex  : 0;
+  width : 130px;
+  height: 70px;
+}
+
+.right-img img {
+  width : 130px;
+  height: 70px;
+}
+
+.new-time {
+  position : absolute;
+  bottom   : 10px;
+  left     : 15px;
+  font-size: 12px;
 }
