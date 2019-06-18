@@ -1,30 +1,30 @@
 import React, { Component } from 'react'
-import { Carousel, List } from 'antd'
+import { Carousel, List, Spin } from 'antd'
 import { gql } from '../common/request'
 
 var listNewData = [
   {
     "id": "cjvnv4lvs02br0791r1ur9bvo",
     "articleURL": "https://mp.weixin.qq.com/s/LIJ2S3KYnZVejTXuqDqOBw",
-    "imgURL": "https://upload-images.jianshu.io/upload_images/14609368-da340042bd5209e2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp",
-    "source": "域乎",
-    "title": "【科技百咖】域乎CEO曹胜虎：主动拥抱传统企业 区块链+IOT落地创新场景",
+    "imgURL": "http://5b0988e595225.cdn.sohucs.com/images/20180208/69d97db746f24bc681cc4594703b5684.jpeg",
+    "source": "与数据同行",
+    "title": "业务系统的数据资产管理为什么这么难？",
     "sourceAt": "2019年5月4日"
   },
   {
     "id": "cjvnv4lvs02br0791r1ur9bvo",
     "articleURL": "https://mp.weixin.qq.com/s/LIJ2S3KYnZVejTXuqDqOBw",
-    "imgURL": "https://upload-images.jianshu.io/upload_images/14609368-da340042bd5209e2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp",
-    "source": "域乎",
-    "title": "【科技百咖】域乎CEO曹胜虎：主动拥抱传统企业 区块链+IOT落地创新场景",
+    "imgURL": "http://5b0988e595225.cdn.sohucs.com/images/20180208/69d97db746f24bc681cc4594703b5684.jpeg",
+    "source": "与数据同行",
+    "title": "业务系统的数据资产管理为什么这么难？",
     "sourceAt": "2019年5月4日"
   },
   {
     "id": "cjvnv4lvs02br0791r1ur9bvo",
     "articleURL": "https://mp.weixin.qq.com/s/LIJ2S3KYnZVejTXuqDqOBw",
-    "imgURL": "https://upload-images.jianshu.io/upload_images/14609368-da340042bd5209e2?imageMogr2/auto-orient/strip%7CimageView2/2/w/1000/format/webp",
-    "source": "域乎",
-    "title": "【科技百咖】域乎CEO曹胜虎：主动拥抱传统企业 区块链+IOT落地创新场景",
+    "imgURL": "http://5b0988e595225.cdn.sohucs.com/images/20180208/69d97db746f24bc681cc4594703b5684.jpeg",
+    "source": "与数据同行",
+    "title": "业务系统的数据资产管理为什么这么难？",
     "sourceAt": "2019年5月4日"
   }
 ]
@@ -34,7 +34,8 @@ class newList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      listNewData: listNewData
+      listNewData: listNewData,
+      isLoading: true
     };
   }
 
@@ -80,7 +81,8 @@ class newList extends Component {
     let res = await gql(param, variables)
     if (res) {
       this.setState({
-        listNewData: res.articles
+        listNewData: res.articles,
+        isLoading: false
       })
     }
     return res.articles
@@ -131,12 +133,17 @@ class newList extends Component {
   render() {
     return (
       <div className="App">
-        <div className="swiper-wrp">
-          {this._swiperDom()}
-        </div>
-        <div className="news-wrp">
-          {this._newsListDom()}
-        </div>
+        <Spin
+          tip="Loading..."
+          spinning={this.state.isLoading}
+        >
+          <div className="swiper-wrp">
+            {this._swiperDom()}
+          </div>
+          <div className="news-wrp">
+            {this._newsListDom()}
+          </div>
+        </Spin>
       </div>
     );
   }
