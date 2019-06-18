@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Icon, Spin } from 'antd'
+import { Icon } from 'antd'
 import $ from "jquery"
 
 class newDetail extends Component {
@@ -9,15 +9,17 @@ class newDetail extends Component {
     this.state = {
       title: "",
       ifurl: "",
-      isLoading: true
+      isLoading: true,
+      html: ""
     };
   }
 
   componentDidMount() {
     this.setState({
-      title: this.props.history.location.state.title
+      title: this.props.history.location.state.title,
+      html: this.props.history.location.state.url
     })
-    this._getIframeUrl()
+    // this._getIframeUrl()
   }
 
   _getIframeUrl = () => {
@@ -60,17 +62,14 @@ class newDetail extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{
+        padding: '40px 20px 0'
+      }}>
         {this._goBack()}
-        <Spin
-          tip="Loading..."
-          spinning={this.state.isLoading}
-        >
-          <div
-            className="html-wrp"
-            dangerouslySetInnerHTML={{ __html: this.state.ifurl }}
-          ></div>
-        </Spin>
+        <div
+          className="html-wrp"
+          dangerouslySetInnerHTML={{ __html: this.state.html }}
+        ></div>
       </div>
     );
   }
